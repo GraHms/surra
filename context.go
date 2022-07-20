@@ -19,14 +19,14 @@ type Context struct {
 	Request   *http.Request
 	Writer    ResponseWriter
 
-	Params Params
-	//handlers HandlersChain
+	Params   Params
+	handlers HandlersChain
 	index    int8
 	fullPath string
 
-	//engine       *Engine
-	params *Params
-	//skippedNodes *[]skippedNode
+	engine       *Motor
+	params       *Params
+	skippedNodes *[]skippedNode
 
 	// This mutex protects Keys map.
 	mu sync.RWMutex
@@ -35,7 +35,7 @@ type Context struct {
 	Keys map[string]any
 
 	// Errors is a list of errors attached to all the handlers/middlewares who used this context.
-	//Errors errorMsgs
+	Errors errorMsgs
 
 	// Accepted defines a list of manually accepted formats for content negotiation.
 	Accepted []string
@@ -79,7 +79,7 @@ func (c *Context) BindJSON(obj any) error {
 	return c.MustBindWith(obj, binding.JSON)
 }
 
-// It will abort the request with HTTP 400 if any error occurs.
+// MustBindWith It will abort the request with HTTP 400 if any error occurs.
 // See the binding package.
 func (c *Context) MustBindWith(obj any, b binding.Binding) error {
 	if err := c.ShouldBindWith(obj, b); err != nil {
@@ -172,13 +172,14 @@ func bodyAllowedForStatus(status int) bool {
 // Next should be used only inside middleware.
 // It executes the pending handlers in the chain inside the calling handler.
 // See example in GitHub.
-//func (c *Context) Next() {
-//	c.index++
-//	for c.index < int8(len(c.handlers)) {
-//		c.handlers[c.index](c)
-//		c.index++
-//	}
-//}
+func (c *Context) Next() {
+	c.index++
+	for c.index < int8(len(c.handlers)) {
+		c.handlers[c.index](c)
+		c.index++
+	}
+}
+
 //
 // IsAborted returns true if the current context was aborted.
 func (c *Context) IsAborted() bool {
@@ -191,4 +192,21 @@ func (c *Context) IsAborted() bool {
 // for this request are not called.
 func (c *Context) Abort() {
 	c.index = abortIndex
+}
+
+func (c *Context) reset() {
+	c.Writer = &c.writermem
+	c.Params = c.Params[:0]
+	c.handlers = nil
+	c.index = -1
+
+	c.fullPath = ""
+	c.Keys = nil
+	c.Errors = c.Errors[:0]
+	c.Accepted = nil
+	c.queryCache = nil
+	c.formCache = nil
+	c.sameSite = 0
+	*c.params = (*c.params)[:0]
+	*c.skippedNodes = (*c.skippedNodes)[:0]
 }

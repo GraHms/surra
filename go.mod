@@ -2,7 +2,11 @@ module github.com/surra
 
 go 1.18
 
-require github.com/go-playground/validator/v10 v10.11.0
+require (
+	github.com/go-playground/validator/v10 v10.11.0
+	github.com/mattn/go-isatty v0.0.14
+	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2
+)
 
 require (
 	github.com/go-playground/locales v0.14.0 // indirect
