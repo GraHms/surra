@@ -1,4 +1,4 @@
-package TMFramework
+package surra
 
 import (
 	"github.com/surra/internal/bytesconv"
@@ -224,8 +224,9 @@ func (engine *Motor) addRoute(method, path string, handlers HandlersChain) {
 
 // Default returns an Engine instance with the Logger and Recovery middleware already attached.
 func Default() *Motor {
-	//debugPrintWARNINGDefault()
+	debugPrintWARNINGDefault()
 	engine := New()
+	engine.HandleMethodNotAllowed = true
 	//engine.Use(Logger(), Recovery())
 	return engine
 }

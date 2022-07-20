@@ -1,4 +1,4 @@
-package TMFramework
+package surra
 
 import (
 	"bufio"
@@ -68,14 +68,12 @@ func (w *responseWriter) Status() int {
 	return w.status
 }
 
-func (r responseWriter) Size() int {
-	//TODO implement me
-	panic("implement me")
+func (w *responseWriter) Size() int {
+	return w.size
 }
 
-func (r responseWriter) Written() bool {
-	//TODO implement me
-	panic("implement me")
+func (w *responseWriter) Written() bool {
+	return w.size != noWritten
 }
 
 func (w *responseWriter) WriteHeader(code int) {

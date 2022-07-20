@@ -1,4 +1,4 @@
-package TMFramework
+package surra
 
 type TMFError struct {
 	Code    string `json:"code"`

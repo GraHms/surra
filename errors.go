@@ -1,4 +1,4 @@
-package TMFramework
+package surra
 
 import (
 	"fmt"
@@ -51,7 +51,7 @@ func (msg *Error) SetMeta(data any) *Error {
 
 // JSON creates a properly formatted JSON
 func (msg *Error) JSON() any {
-	jsonData := H{}
+	jsonData := KeyVal{}
 	if msg.Meta != nil {
 		value := reflect.ValueOf(msg.Meta)
 		switch value.Kind() {

@@ -3,8 +3,8 @@ package binding
 import "net/http"
 
 const (
-	MIMEJSON        = "application/json"
-	MIMEJSONPROBLEM = "application/problem+json"
+	MIMEJSON              = "application/json"
+	MIMEMultipartPOSTForm = "multipart/form-data"
 )
 
 // Binding describes the interface which needs to be implemented for binding the
@@ -54,18 +54,32 @@ var Validator StructValidator = &defaultValidator{}
 
 // These implement the Binding interface and can be used to bind the data
 // present in the request to struct instances.
+// These implement the Binding interface and can be used to bind the data
+// present in the request to struct instances.
 var (
 	JSON = jsonBinding{}
+
+	Form = formBinding{}
+
+	FormPost      = formPostBinding{}
+	FormMultipart = formMultipartBinding{}
 )
 
 // Default returns the appropriate Binding instance based on the HTTP method
 // and the content type.
 func Default(method, contentType string) Binding {
 	if method == http.MethodGet {
-		return JSON
+		return Form
 	}
 
-	return JSON
+	switch contentType {
+	case MIMEJSON:
+		return JSON
+	case MIMEMultipartPOSTForm:
+		return FormMultipart
+	default: // case MIMEPOSTForm:
+		return Form
+	}
 }
 
 func validate(obj any) error {

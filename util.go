@@ -1,4 +1,4 @@
-package TMFramework
+package surra
 
 import (
 	"os"
@@ -7,7 +7,7 @@ import (
 	"runtime"
 )
 
-type H map[string]any
+type KeyVal map[string]any
 
 func filterFlags(content string) string {
 	for i, char := range content {

@@ -1,4 +1,4 @@
-package TMFramework
+package surra
 
 // Param is a single URL parameter, consisting of a key and a value.
 type Param struct {

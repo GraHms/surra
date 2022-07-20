@@ -1,4 +1,4 @@
-package TMFramework
+package surra
 
 import (
 	"github.com/surra/binding"
