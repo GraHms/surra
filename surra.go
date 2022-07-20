@@ -48,7 +48,7 @@ const (
 )
 
 // Motor is the framework's instance, it contains the muxer, middleware and configuration settings.
-// Create an instance of Engine, by using New() or Default()
+// Create an instance of Engine, by using New() or Principal()
 type Motor struct {
 	RouterGroup
 
@@ -222,8 +222,8 @@ func (engine *Motor) addRoute(method, path string, handlers HandlersChain) {
 	}
 }
 
-// Default returns an Engine instance with the Logger and Recovery middleware already attached.
-func Default() *Motor {
+// Principal returns an Engine instance with the Logger and Recovery middleware already attached.
+func Principal() *Motor {
 	debugPrintWARNINGDefault()
 	engine := New()
 	engine.HandleMethodNotAllowed = true

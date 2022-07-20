@@ -18,7 +18,7 @@ type BodyModel struct {
 }
 
 func main() {
-	r := surra.Default()
+	r := surra.Principal()
 	r.GET("/hello", func(c *surra.Context) {
 		c.JSON(http.StatusOK, surra.KeyVal{
 			"message": "pong",
