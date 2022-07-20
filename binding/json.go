@@ -1,7 +1,3 @@
-// Copyright 2014 Manu Martinez-Almeida. All rights reserved.
-// Use of this source code is governed by a MIT style
-// license that can be found in the LICENSE file.
-
 package binding
 
 import (
@@ -42,12 +38,7 @@ func (jsonBinding) BindBody(body []byte, obj any) error {
 
 func decodeJSON(r io.Reader, obj any) error {
 	decoder := json.NewDecoder(r)
-	if EnableDecoderUseNumber {
-		decoder.UseNumber()
-	}
-	if EnableDecoderDisallowUnknownFields {
-		decoder.DisallowUnknownFields()
-	}
+
 	if err := decoder.Decode(obj); err != nil {
 		return err
 	}

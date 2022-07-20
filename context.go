@@ -19,13 +19,13 @@ type Context struct {
 	Request   *http.Request
 	Writer    ResponseWriter
 
-	//Params Params
+	Params Params
 	//handlers HandlersChain
 	index    int8
 	fullPath string
 
 	//engine       *Engine
-	//params       *Params
+	params *Params
 	//skippedNodes *[]skippedNode
 
 	// This mutex protects Keys map.
