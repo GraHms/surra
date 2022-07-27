@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/garhms/surra"
+	"github.com/grahms/surra"
 	"net/http"
 )
 
