@@ -2,7 +2,7 @@ package surra
 
 import (
 	"bytes"
-	"github.com/garhms/surra/internal/bytesconv"
+	"github.com/grahms/surra/internal/bytesconv"
 	"net/url"
 	"strings"
 	"unicode"

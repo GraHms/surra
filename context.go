@@ -1,8 +1,8 @@
 package surra
 
 import (
-	"github.com/garhms/surra/binding"
-	"github.com/garhms/surra/render"
+	"github.com/grahms/surra/binding"
+	"github.com/grahms/surra/render"
 	"math"
 	"net/http"
 	"net/url"

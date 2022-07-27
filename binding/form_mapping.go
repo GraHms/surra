@@ -12,8 +12,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/garhms/surra/internal/bytesconv"
-	"github.com/garhms/surra/internal/json"
+	"github.com/grahms/surra/internal/bytesconv"
+	"github.com/grahms/surra/internal/json"
 )
 
 var (

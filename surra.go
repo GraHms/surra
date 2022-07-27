@@ -1,8 +1,8 @@
 package surra
 
 import (
-	"github.com/garhms/surra/internal/bytesconv"
-	"github.com/garhms/surra/render"
+	"github.com/grahms/surra/internal/bytesconv"
+	"github.com/grahms/surra/render"
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
 	"html/template"
