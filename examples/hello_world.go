@@ -26,7 +26,7 @@ func main() {
 	})
 	r.POST("/hello", func(c *surra.Context) {
 		var model BodyModel
-		err := c.ShouldBindJSON(&model)
+		err := c.BindTMFJson(&model)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, err.Error())
 			return

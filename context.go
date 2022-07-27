@@ -62,6 +62,15 @@ func (c *Context) ShouldBindJSON(obj any) error {
 	return c.ShouldBindWith(obj, binding.JSON)
 }
 
+// BindTMFJson is a shortcut for c.ShouldBindWith(obj, binding.JSON).
+func (c *Context) BindTMFJson(obj any) error {
+	err := c.ShouldBindWith(obj, binding.JSON)
+	if err != nil {
+
+	}
+	return c.ShouldBindWith(obj, binding.JSON)
+}
+
 // Bind checks the Method and Content-Type to select a binding engine automatically,
 // Depending on the "Content-Type" header different bindings are used, for example:
 //     "application/json" --> JSON binding
