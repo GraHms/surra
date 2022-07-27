@@ -3,7 +3,7 @@ package binding
 import (
 	"bytes"
 	"errors"
-	"github.com/surra/internal/json"
+	"github.com/garhms/surra/internal/json"
 	"io"
 	"net/http"
 )

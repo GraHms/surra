@@ -1,4 +1,4 @@
-module github.com/surra
+module github.com/garhms/surra
 
 go 1.18
 

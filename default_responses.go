@@ -1,7 +1,7 @@
 package surra
 
 import (
-	"github.com/surra/internal/json"
+	"github.com/garhms/surra/internal/json"
 )
 
 type TMFError struct {
